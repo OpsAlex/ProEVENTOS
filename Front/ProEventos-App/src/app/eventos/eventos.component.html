@@ -3,13 +3,13 @@
 
 <form action="" class="form-inline">
   <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="buscar">
-    <button class="btn btn-outline-sucess">Buscar</button>
+    <input type="text" class="form-control mr-2" placeholder="Buscar">
+    <button class="btn btn-outline-success" type="submit">Buscar</button>
   </div>
 </form>
 
 <table class="table table-striped">
-  <thead class="thead-dark">
+  <thead class="table-dark">
     <tr>
       <th>#</th>
       <th>Imagem</th>
@@ -22,16 +22,23 @@
     </tr>
   </thead>
 
-  <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+  <tbody *ngIf="eventos && eventos.length">
+    <tr *ngFor="let evento of eventos">
+      <td>{{evento.eventoId}}</td>
+      <td>{{evento.imagemURL}}</td>
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>{{evento.dataEvento}}</td>
+      <td>{{evento.qtdPessoas}}</td>
+      <td>{{evento.lote}}</td>
+      <td>{{evento.local}}</td>
     </tr>
   </tbody>
+  <tfoot *ngIf="!eventos.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum evento encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
 </table>
