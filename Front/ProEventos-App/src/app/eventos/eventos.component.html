@@ -1,18 +1,24 @@
 <h2>Eventos</h2>
 <hr>
 
-<form action="" class="form-inline">
-  <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="Buscar">
-    <button class="btn btn-outline-success" type="submit">Buscar</button>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
   </div>
-</form>
+</nav>
 
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
+      <th>
+        <button type="button" class="btn btn-outline-light btn-sm"
+        (click)="alterarImagem()">{{showImg ? 'Exibir' : 'Ocultar'}}
+        </button>
+      </th>
       <th>#</th>
-      <th>Imagem</th>
       <th>Tema</th>
       <th>Local</th>
       <th>Data</th>
@@ -24,8 +30,13 @@
 
   <tbody *ngIf="eventos && eventos.length">
     <tr *ngFor="let evento of eventos">
+      <td>
+        <img [collapse] ="!showImg" [isAnimated]="true"
+        src="{{evento.imagemURL}}"
+        [style.width.px] = "widthImg"
+        [style.margin.px] = "marginImg"
+        ></td>
       <td>{{evento.eventoId}}</td>
-      <td>{{evento.imagemURL}}</td>
       <td>{{evento.tema}}</td>
       <td>{{evento.local}}</td>
       <td>{{evento.dataEvento}}</td>
@@ -34,7 +45,7 @@
       <td>{{evento.local}}</td>
     </tr>
   </tbody>
-  <tfoot *ngIf="!eventos.length">
+  <tfoot *ngIf="!eventos">
     <tr>
       <td colspan="8" class="text-center">
         <h4>Nenhum evento encontrado!</h4>
