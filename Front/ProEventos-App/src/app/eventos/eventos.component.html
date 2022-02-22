@@ -3,13 +3,15 @@
 
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+    <div class="d-flex">
+      <input class="form-control me-2" t
+      ype="search" placeholder="Buscar" aria-label="Search"
+      [(ngModel)]="filtroLista">
+
       <button class="btn btn-outline-success" type="submit">Buscar</button>
-    </form>
+    </div>
   </div>
 </nav>
-
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
@@ -29,7 +31,7 @@
   </thead>
 
   <tbody *ngIf="eventos && eventos.length">
-    <tr *ngFor="let evento of eventos">
+    <tr *ngFor="let evento of eventosFiltrados">
       <td>
         <img [collapse] ="!showImg" [isAnimated]="true"
         src="{{evento.imagemURL}}"
