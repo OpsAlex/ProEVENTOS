@@ -4,11 +4,10 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <div class="d-flex">
-      <input class="form-control me-2" t
-      ype="search" placeholder="Buscar" aria-label="Search"
+      <label class="m-2">Buscar: </label>
+      <input class="form-control me-2" type="search"
+       placeholder="Buscar" aria-label="Search"
       [(ngModel)]="filtroLista">
-
-      <button class="btn btn-outline-success" type="submit">Buscar</button>
     </div>
   </div>
 </nav>
@@ -44,7 +43,10 @@
       <td>{{evento.dataEvento}}</td>
       <td>{{evento.qtdPessoas}}</td>
       <td>{{evento.lote}}</td>
-      <td>{{evento.local}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm m-2">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      </td>
     </tr>
   </tbody>
   <tfoot *ngIf="!eventos">
